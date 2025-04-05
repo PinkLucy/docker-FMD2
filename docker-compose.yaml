@@ -1,6 +1,6 @@
 services:
   fmd2:
-    image: elrydocker/fmd2:latest
+    image: sillysuki/fmd2:latest
     container_name: fmd2
     environment:
       - PUID=1000

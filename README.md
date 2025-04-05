@@ -4,7 +4,7 @@ This Fork is to keep this Project going and FMD2 updated.
 
 Dockerized FMD2 (Windows with Wine) using VNC, noVNC and webSocketify to display GUI on a webpage.
 
-https://hub.docker.com/r/elrydocker/fmd2
+https://hub.docker.com/r/sillysuki/fmd2
 
 Make sure to configure it using the 'web' ui.
 
@@ -12,19 +12,19 @@ Make sure to configure it using the 'web' ui.
 * Does not require any display, works headless
 * Keeps all of FMD2 features
 * Since it's docker, it works on Linux
-* Make use of Linuxserver alpine base image
+* Make use of Linuxserver ubuntu image
 
 ## Docker
 ```yaml
 services:
   fmd2:
-    image: elrydocker/fmd2:latest
+    image: sillysuki/fmd2:latest
     container_name: fmd2
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/Paris
-      - UMASK=022
+      - TZ=Europe/Berlin
+      - UMASK=002
       - THRESHOLD_MINUTES=3
       - TRANSFER_FILE_TYPE=.cbz
     ports:

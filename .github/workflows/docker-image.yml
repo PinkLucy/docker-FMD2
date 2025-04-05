@@ -26,4 +26,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: elrydocker/fmd2:latest
+          tags: sillysuki/fmd2:latest
