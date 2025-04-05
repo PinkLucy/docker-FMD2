@@ -8,4 +8,4 @@ chmod 1777 /tmp/.X11-unix -R
 chown abc:abc /app -R
 chown abc:abc /config -R
 chown abc:abc /downloads -R
-chmod +x /usr/local/bin/sync_dir
+#chmod +x /usr/local/bin/sync_dir

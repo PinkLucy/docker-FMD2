@@ -1,17 +1,18 @@
 services:
   fmd2:
-    image: elrydocker/fmd2:latest
+    image: ghcr.io/dymas-cz/fmd2:latest
     container_name: fmd2
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Berlin
-      - UMASK=022
-      - THRESHOLD_MINUTES=3
-      - TRANSFER_FILE_TYPE=.cbz
+      - UMASK=002
+      #- THRESHOLD_MINUTES=3
+      #- TRANSFER_FILE_TYPE=.cbz
     ports:
       - 3000:3000
     volumes:
-      - ./fmd:/app/FMD2/userdata
+      - ./fmd/userdata:/app/FMD2/userdata
+      - ./fmd/data:/app/FMD2/data
       - ./manga:/downloads
     restart: unless-stopped
