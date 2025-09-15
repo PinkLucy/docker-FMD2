@@ -36,7 +36,6 @@ RUN apt-get update && \
     touch /app/FMD2/lua/use_webdriver && \
     pip3 install --no-cache-dir requests && \
     curl -s https://api.github.com/repos/FlareSolverr/FlareSolverr/releases/tags/v${FLARESOLVERR_VERSION} | grep "browser_download_url.*download.*flaresolverr_linux_x64.tar.gz" | cut -d : -f 2,3 | tr -d '"' | wget -qi - -O flaresolverr.tar.gz && \
-    mkdir -p /app/FMD2/lua/websitebypass/flaresolverr && \
     tar -xzf flaresolverr.tar.gz -C /app/FMD2/lua/websitebypass/ --strip-components=1 && \
     rm flaresolverr.tar.gz
   
