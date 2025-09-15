@@ -29,17 +29,20 @@ COPY settings.json root /
 ADD root /
 
 #Install Cloudflare Workaround for Multiple Sites
-RUN apt-get update && \
-    apt-get install -y python3 tar wget && \
-    touch /app/FMD2/lua/use_webdriver && \
-    pip install requests && \
+RUN set -eux; \
+    apt-get update; \
+    apt-get install -y --no-install-recommends \
+      python3 python3-pip curl tar wget ca-certificates; \
+    rm -rf /var/lib/apt/lists/*; \
+    touch /app/FMD2/lua/use_webdriver; \
+    pip install --no-cache-dir requests; \
     curl -s https://api.github.com/repos/FlareSolverr/FlareSolverr/releases/latest \
-      | grep "browser_download_url.*flaresolverr_linux_x64.tar.gz" \
+      | grep -m1 "browser_download_url.*flaresolverr_linux_x64.tar.gz" \
       | cut -d : -f 2,3 | tr -d '"' \
-      | wget -qi - -O /tmp/flaresolverr.tar.gz && \
-    mkdir -p /app/FMD2/lua/websitebypass/flaresolverr && \
-    tar -xzf /tmp/flaresolverr.tar.gz -C /app/FMD2/lua/websitebypass/flaresolverr --strip-components=1 && \
-    rm /tmp/flaresolverr.tar.gz
+      | wget -qi - -O /tmp/flaresolverr.tar.gz; \
+    mkdir -p /app/FMD2/lua/websitebypass/flaresolverr; \
+    tar -xzf /tmp/flaresolverr.tar.gz -C /app/FMD2/lua/websitebypass/flaresolverr --strip-components=1; \
+    rm -f /tmp/flaresolverr.tar.gz
   
 WORKDIR /app/FMD2/lua/websitebypass/flaresolverr
 CMD ["./flaresolverr"]
