@@ -18,12 +18,13 @@ jobs:
           echo "=== Docker daemon.json ==="
           cat /etc/docker/daemon.json
 
-      - name: Login to Docker Hub (with retries)
+      - name: Login to Docker Hub (with retries & full debug)
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
         run: |
-          set +e
+          set -x                     # bash command tracing
+          export DOCKER_CLI_DEBUG=1  # Docker CLI debug logs
           for i in 1 2 3 4 5; do
             echo ">>> docker login attempt $i"
             echo "$DOCKERHUB_TOKEN" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
@@ -33,8 +34,8 @@ jobs:
               exit 0
             else
               echo "Docker login failed with code $RC"
-              echo "Retrying in $((i*10)) seconds..."
-              sleep $((i*10))
+              echo "Retrying in 5 seconds..."
+              sleep 5
             fi
           done
           echo "ERROR: All docker login attempts failed"
