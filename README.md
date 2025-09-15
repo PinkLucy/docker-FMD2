@@ -29,7 +29,7 @@ services:
       - TRANSFER_FILE_TYPE=.cbz
     ports:
       - 3000:3000
-      - 8191:9191
+      - 8191:8191
     volumes:
       - ./fmd2:/app/FMD2/userdata
       - ./manga:/downloads
