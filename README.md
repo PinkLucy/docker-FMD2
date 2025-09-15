@@ -3,6 +3,7 @@ This Fork is to keep this Project going and FMD2 updated.
 ## Descriptions
 
 Dockerized FMD2 (Windows with Wine) using VNC, noVNC and webSocketify to display GUI on a webpage.
+Websites protected with Cloudflare do not work with this, FlareSolverr doesnt work with wine.
 
 https://hub.docker.com/r/sillysuki/fmd2
 
