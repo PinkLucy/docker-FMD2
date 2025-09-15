@@ -32,9 +32,10 @@ ADD root /
 #Install Cloudflare Workaround for Multiple Sites
 RUN apt-get update && \
     apt-get install -y python3 python3-pip curl wget tar ca-certificates && \
+    mkdir -p /app/FMD2/lua && mkdir -p mkdir -p /app/FMD2/lua/websitebypass && \
     touch /app/FMD2/lua/use_webdriver && \
     pip3 install --no-cache-dir requests && \
-    curl -s https://api.github.com/repos/FlareSolverr/FlareSolverr/releases/tags/${FLARESOLVERR_VERSION} \
+    curl -s https://api.github.com/repos/FlareSolverr/FlareSolverr/releases/tags/v${FLARESOLVERR_VERSION} \
       | grep "browser_download_url.*flaresolverr_linux_x64.tar.gz" \
       | cut -d : -f 2,3 | tr -d '"' \
       | wget -qi - -O flaresolverr.tar.gz && \
