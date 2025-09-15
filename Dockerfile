@@ -37,9 +37,6 @@ RUN apt-get update && \
     curl -s https://api.github.com/repos/FlareSolverr/FlareSolverr/releases/tags/v${FLARESOLVERR_VERSION} | grep "browser_download_url.*download.*flaresolverr_linux_x64.tar.gz" | cut -d : -f 2,3 | tr -d '"' | wget -qi - -O flaresolverr.tar.gz && \
     tar -xzf flaresolverr.tar.gz -C /app/FMD2/lua/websitebypass/ --strip-components=1 && \
     rm flaresolverr.tar.gz
-  
-WORKDIR /app/FMD2/lua/websitebypass/flaresolverr
-CMD ["./flaresolverr"]
 
 VOLUME /config
 EXPOSE 3000
