@@ -40,3 +40,4 @@ RUN apt-get update && \
 
 VOLUME /config
 EXPOSE 3000
+EXPOSE 8191
