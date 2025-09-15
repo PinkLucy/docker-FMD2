@@ -1,6 +1,8 @@
-#!/bin/bash
+#!/bin/sh
 sync_dir /app/FMD2/downloads /downloads
 cd /app/FMD2/lua/websitebypass/flaresolverr
+touch /app/FMD2/flaresolverr.log
+chmod 644 /app/FMD2/flaresolverr.log 2>/dev/null || true
 ./flaresolverr >> /app/FMD2/flaresolverr.log 2>&1 &
 cd /app/FMD2
 exec wine fmd.exe
