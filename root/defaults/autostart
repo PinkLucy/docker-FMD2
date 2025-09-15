@@ -1,5 +1,6 @@
+#!/bin/bash
 sync_dir /app/FMD2/downloads /downloads
 cd /app/FMD2/lua/websitebypass/flaresolverr
-./flaresolverr &
+./flaresolverr >> /proc/1/fd/1 2>> /proc/1/fd/2 &
 cd /app/FMD2
-wine fmd.exe
+exec wine fmd.exe
